@@ -1,0 +1,215 @@
+# SKILL: Christian's Modern Dark UI Design System
+
+## Trigger
+Use this skill for ALL web projects, HTML files, dashboards, Android WebView apps,
+and any visual UI Christian requests. Apply automatically without being asked.
+
+---
+
+## Core Philosophy
+- Deep dark backgrounds with subtle colored ambience
+- Glassmorphism cards with backdrop blur
+- Neon accent colors with glow effects
+- Premium Fintech / Analytics aesthetic
+- Mobile-first, touch-friendly
+
+---
+
+## Fonts
+```html
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+```
+
+- **UI / Headings / Body:** `Plus Jakarta Sans` — weights 400, 500, 600, 700, 800
+- **Numbers / Data / Code:** `JetBrains Mono` — weights 400, 500
+
+---
+
+## CSS Variables
+```css
+:root {
+  --bg:#090910; --surface:#111118; --card:rgba(255,255,255,0.04);
+  --b:rgba(255,255,255,0.07); --ba:rgba(0,212,255,0.25);
+  --blue:#00d4ff; --purple:#a855f7; --green:#00ff88;
+  --orange:#f7931a; --red:#f87171;
+  --t1:#e2e8f0; --t2:#94a3b8; --t3:#475569;
+  --glow-blue:0 0 20px rgba(0,212,255,0.25);
+  --glow-purple:0 0 20px rgba(168,85,247,0.25);
+  --glow-green:0 0 20px rgba(0,255,136,0.2);
+  --r:14px;
+  --font:'Plus Jakarta Sans',system-ui,sans-serif;
+  --mono:'JetBrains Mono','Courier New',monospace;
+}
+```
+
+---
+
+## Background
+```css
+body {
+  background: var(--bg);
+  font-family: var(--font);
+  color: var(--t1);
+  background-image:
+    radial-gradient(ellipse at 15% 0%, rgba(0,212,255,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 100%, rgba(168,85,247,0.06) 0%, transparent 55%);
+}
+```
+
+---
+
+## Components
+
+### Glass Card
+```css
+.card { background:var(--card); border:1px solid var(--b); border-radius:var(--r); padding:16px; backdrop-filter:blur(8px); transition:border-color .2s,transform .2s; }
+.card:hover { border-color:rgba(255,255,255,0.11); transform:translateY(-1px); }
+.card.gl-blue   { border-color:var(--ba); box-shadow:var(--glow-blue); }
+.card.gl-green  { border-color:rgba(0,255,136,0.25); box-shadow:var(--glow-green); }
+.card.gl-purple { border-color:rgba(168,85,247,0.25); box-shadow:var(--glow-purple); }
+```
+
+### Gradient Border Card
+```css
+.gb    { border-radius:var(--r); padding:1px; background:linear-gradient(135deg,rgba(0,212,255,0.35),rgba(168,85,247,0.35)); }
+.gb-in { background:var(--surface); border-radius:calc(var(--r) - 1px); padding:16px; }
+```
+
+### Stat
+```css
+.lbl { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--t3); margin-bottom:7px; }
+.val { font-family:var(--mono); font-size:22px; font-weight:500; margin-bottom:3px; }
+.val.blue{color:var(--blue);} .val.green{color:var(--green);} .val.orange{color:var(--orange);}
+.chg.up{color:var(--green); font-size:11px; font-weight:500;}
+.chg.dn{color:var(--red);   font-size:11px; font-weight:500;}
+```
+
+### Badge
+```css
+.badge { display:inline-flex; align-items:center; gap:4px; padding:3px 9px; border-radius:99px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
+.b-blue   { background:rgba(0,212,255,0.1);  color:var(--blue);   border:1px solid rgba(0,212,255,0.2); }
+.b-green  { background:rgba(0,255,136,0.1);  color:var(--green);  border:1px solid rgba(0,255,136,0.2); }
+.b-purple { background:rgba(168,85,247,0.1); color:var(--purple); border:1px solid rgba(168,85,247,0.2); }
+.b-orange { background:rgba(247,147,26,0.1); color:var(--orange); border:1px solid rgba(247,147,26,0.2); }
+.dot { width:5px; height:5px; border-radius:50%; background:currentColor; }
+```
+
+### Button
+```css
+.btn   { display:inline-flex; align-items:center; gap:6px; padding:7px 14px; border-radius:8px; font-size:12px; font-weight:600; cursor:pointer; border:none; font-family:var(--font); transition:all .15s; }
+.btn-p { background:linear-gradient(135deg,var(--blue),#0066ff); color:#000; font-weight:700; }
+.btn-p:hover { filter:brightness(1.1); transform:translateY(-1px); }
+.btn-g { background:transparent; color:var(--t2); border:1px solid var(--b); }
+.btn-g:hover { border-color:rgba(255,255,255,0.15); color:var(--t1); }
+```
+
+### Progress Bar
+```css
+.pt { height:3px; background:rgba(255,255,255,0.06); border-radius:99px; overflow:hidden; }
+.pf { height:100%; border-radius:99px; }
+.fi-blue   { background:linear-gradient(90deg,var(--blue),#0066ff); }
+.fi-purple { background:linear-gradient(90deg,var(--purple),#6d28d9); }
+.fi-orange { background:linear-gradient(90deg,var(--orange),#c27414); }
+.fi-green  { background:linear-gradient(90deg,var(--green),#00b359); }
+```
+
+### Section Label
+```css
+.sec { font-size:11px; font-weight:700; color:var(--t3); text-transform:uppercase; letter-spacing:.09em; }
+```
+
+### Page Title
+```css
+.page-title { font-size:26px; font-weight:800; background:linear-gradient(135deg,var(--blue),var(--purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.page-sub { color:var(--t2); font-size:13px; }
+```
+
+### Timeframe Buttons
+```css
+.tf { padding:4px 11px; border-radius:7px; font-size:11px; font-weight:600; cursor:pointer; border:1px solid var(--b); background:transparent; color:var(--t3); font-family:var(--font); transition:all .15s; }
+.tf.active { background:rgba(0,212,255,0.1); border-color:rgba(0,212,255,0.3); color:var(--blue); }
+```
+
+### Tooltip
+```css
+.tt { position:absolute; background:#1a1a2e; border:1px solid rgba(0,212,255,0.25); border-radius:9px; padding:8px 12px; pointer-events:none; display:none; font-size:11px; white-space:nowrap; box-shadow:0 0 16px rgba(0,212,255,0.15); }
+```
+
+---
+
+## Chart System (Canvas Bezier)
+
+- Smooth Bezier-Kurven — keine harten Ecken
+- Gradient Fill unter Kurve (Farbe → transparent)
+- `ctx.shadowBlur = 8` Glow auf Linie
+- Glühender Dot am letzten Punkt
+- Grün wenn steigend, Rot wenn fallend
+- Grid: `rgba(255,255,255,0.04)`
+- Y-Labels: Plus Jakarta Sans 10px, `rgba(148,163,184,0.65)`
+```javascript
+// Smooth Bezier line
+ctx.beginPath();
+ctx.moveTo(x(0), y(data[0]));
+for (let i = 1; i < data.length; i++) {
+  const px=x(i-1), py=y(data[i-1]), nx=x(i), ny=y(data[i]), cx=(px+nx)/2;
+  ctx.bezierCurveTo(cx, py, cx, ny, nx, ny);
+}
+ctx.strokeStyle = lineColor; // #00ff88 or #f87171
+ctx.lineWidth = 2;
+ctx.shadowBlur = 8;
+ctx.shadowColor = glowColor;
+ctx.stroke();
+ctx.shadowBlur = 0;
+```
+
+---
+
+## Grid Layouts
+```css
+.grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+.grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+@media(max-width:520px) {
+  .grid4 { grid-template-columns:repeat(2,1fr); }
+  .grid3 { grid-template-columns:repeat(2,1fr); }
+  .grid2 { grid-template-columns:1fr; }
+}
+```
+
+---
+
+## Full HTML Boilerplate
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Name</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#090910; --surface:#111118; --card:rgba(255,255,255,0.04);
+  --b:rgba(255,255,255,0.07); --ba:rgba(0,212,255,0.25);
+  --blue:#00d4ff; --purple:#a855f7; --green:#00ff88;
+  --orange:#f7931a; --red:#f87171;
+  --t1:#e2e8f0; --t2:#94a3b8; --t3:#475569;
+  --glow-blue:0 0 20px rgba(0,212,255,0.25);
+  --r:14px;
+  --font:'Plus Jakarta Sans',system-ui,sans-serif;
+  --mono:'JetBrains Mono','Courier New',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body {
+  background:var(--bg); font-family:var(--font); color:var(--t1);
+  background-image:
+    radial-gradient(ellipse at 15% 0%,rgba(0,212,255,0.07) 0%,transparent 55%),
+    radial-gradient(ellipse at 85% 100%,rgba(168,85,247,0.06) 0%,transparent 55%);
+}
+</style>
+</head>
+<body>
+<!-- content here -->
+</body>
+</html>
+```
