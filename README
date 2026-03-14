@@ -1,0 +1,159 @@
+# ₿ Bitcoin Sentiment Viewer
+
+> Ein live Bitcoin-Dashboard als native Android-App – Preischart, Marktsentiment, Exchange Reserve, Fear & Greed Index und aktuelle News auf einen Blick.
+
+![App Preview](screenshots/preview.png)
+
+---
+
+## 📱 Screenshots
+
+| BTC Chart | Sentiment | Exchange Reserve |
+|-----------|-----------|-----------------|
+| ![Chart](screenshots/chart.png) | ![Sentiment](screenshots/sentiment.png) | ![Exchange](screenshots/exchange.png) |
+
+| Fear & Greed | News |
+|-------------|------|
+| ![FNG](screenshots/feargreed.png) | ![News](screenshots/news.png) |
+
+---
+
+## ✨ Features
+
+- **Live BTC Preis** – aktualisiert über die Binance API, kein API-Key nötig
+- **7 Zeitrahmen** – Stunden, Tage, Monate, Wochen, Jahre, 10J, MAX
+- **Marktsentiment** – Retail vs. Institutionell vs. BlackRock IBIT ETF
+- **Exchange Reserve** – Bitcoin-Bestände auf allen Börsen (On-Chain-Modell)
+- **Fear & Greed Index** – Tageswert + 30-Tage-Verlauf mit farbigen Zonen
+- **Blocktrainer News** – aktuellste Bitcoin-Nachrichten direkt aus dem Feed
+- **Halving-Linien** – H1–H4 im Chart eingezeichnet
+- **Vollbildmodus** – keine Statusleiste, optimiert für Android
+
+---
+
+## 📥 APK herunterladen
+
+1. Gehe zu **[Actions](../../actions)** → neuester erfolgreicher Build
+2. Scrolle runter zu **Artifacts**
+3. Lade **`BTC-Dashboard-Debug`** herunter
+4. Entpacke die ZIP-Datei auf deinem PC
+5. Übertrage die `.apk`-Datei auf dein Android-Gerät
+6. Installiere sie (vorher **„Unbekannte Quellen"** in den Einstellungen erlauben)
+
+---
+
+## 🔧 Selbst bauen
+
+### Voraussetzungen
+- [Android Studio](https://developer.android.com/studio) **oder** nur GitHub Actions (kein lokales Setup nötig)
+- Android-Gerät mit **Android 8.0+** (API 26)
+
+### Mit GitHub Actions (empfohlen – kein Android Studio nötig)
+
+```bash
+# 1. Repo forken oder klonen
+git clone https://github.com/chri57i4n/Bitcoin-Sentiment-Viewer-2-0.git
+cd Bitcoin-Sentiment-Viewer-2-0
+
+# 2. Änderungen machen (z.B. index.html anpassen)
+# app/src/main/assets/index.html
+
+# 3. Pushen → Build startet automatisch
+git add .
+git commit -m "Meine Änderungen"
+git push
+```
+
+Danach unter **Actions → Build APK → Artifacts** die fertige APK herunterladen.
+
+### Lokal mit Android Studio
+
+```bash
+git clone https://github.com/chri57i4n/Bitcoin-Sentiment-Viewer-2-0.git
+```
+
+1. Android Studio öffnen → **"Open existing project"**
+2. Den geklonten Ordner auswählen
+3. Warten bis Gradle synchronisiert ist
+4. **▶ Run** drücken oder **Build → Build APK**
+
+---
+
+## 📁 Projektstruktur
+
+```
+Bitcoin-Sentiment-Viewer-2-0/
+├── .github/
+│   └── workflows/
+│       └── build.yml          ← GitHub Actions (APK-Builder)
+├── app/
+│   └── src/main/
+│       ├── assets/
+│       │   └── index.html     ← Das komplette Dashboard (HTML/JS/CSS)
+│       ├── java/.../
+│       │   └── MainActivity.kt ← Android WebView Wrapper
+│       ├── res/
+│       │   ├── layout/        ← UI-Layout
+│       │   ├── mipmap-*/      ← App-Icons
+│       │   └── values/        ← Farben, Strings, Theme
+│       └── AndroidManifest.xml
+├── gradle/
+├── build.gradle
+├── gradle.properties          ← Wichtig: verhindert Build-Fehler
+└── settings.gradle
+```
+
+---
+
+## 🛠 Technologie
+
+| Komponente | Technologie |
+|-----------|-------------|
+| App-Wrapper | Kotlin + Android WebView |
+| Dashboard | Vanilla HTML / CSS / JavaScript |
+| Charts | HTML5 Canvas (kein Framework) |
+| Preisdaten | [Binance API](https://api.binance.com) |
+| Historische Daten | [CryptoCompare](https://min-api.cryptocompare.com) |
+| Fear & Greed | [alternative.me](https://api.alternative.me/fng/) |
+| News | [Blocktrainer RSS Feed](https://www.blocktrainer.de/feed.xml) |
+| CI/CD | GitHub Actions |
+
+---
+
+## 📸 Screenshots hinzufügen
+
+So fügst du eigene Screenshots zur README hinzu:
+
+**Schritt 1** – Erstelle einen Ordner `screenshots/` im Repo-Root
+
+**Schritt 2** – Mache Screenshots auf deinem Handy und übertrage sie auf den PC
+
+**Schritt 3** – Benenne sie so:
+```
+screenshots/
+├── preview.png      ← Hauptbild (z.B. BTC Chart)
+├── chart.png
+├── sentiment.png
+├── exchange.png
+├── feargreed.png
+└── news.png
+```
+
+**Schritt 4** – Lade sie via GitHub Desktop oder Web-UI hoch:
+- GitHub → **Add file → Upload files** → Dateien reinziehen → Commit
+
+**Schritt 5** – Sie erscheinen automatisch in dieser README ✅
+
+> 💡 **Tipp:** Für ein schönes Vorschaubild mache einen Screenshot im Querformat oder kombiniere mehrere Screenshots mit einem Tool wie [Shots.so](https://shots.so) oder einfach Paint.
+
+---
+
+## 📄 Lizenz
+
+Privates Projekt von [@chri57i4n](https://github.com/chri57i4n) – alle Rechte vorbehalten.
+
+---
+
+<div align="center">
+  <sub>Gebaut mit ❤️ und ₿</sub>
+</div>
